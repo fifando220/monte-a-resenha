@@ -199,8 +199,10 @@ function mkRoom(code,create){
       }
     };
     const fail=e=>{if(!done){done=true;rej(e)}};
-    setTimeout(()=>fail(new Error("timeout")),10000);
-    const p=create?new Peer(id):new Peer();
+    setTimeout(()=>fail(new Error("tempo esgotado")),15000);
+    if(typeof Peer==="undefined")return fail(new Error("biblioteca PeerJS não carregou"));
+    const opt={config:{iceServers:[{urls:"stun:stun.l.google.com:19302"},{urls:"stun:global.stun.twilio.com:3478"},{urls:["turn:openrelay.metered.ca:80","turn:openrelay.metered.ca:443","turn:openrelay.metered.ca:443?transport=tcp"],username:"openrelayproject",credential:"openrelayproject"}]}};
+    const p=create?new Peer(id,opt):new Peer(undefined,opt);
     p.on("error",fail);
     if(create){
       p.on("open",()=>{done=true;res(R)});
@@ -226,7 +228,7 @@ async function online(create){
   try{
     code=c;R=await mkRoom(c,create);host=create;
     ["hello","bid","state","ready","form","pass"].forEach(t=>R.on(t,m=>onMsg(t,m.data)));
-  }catch(x){msg="Não consegui conectar à sala.";return draw()}
+  }catch(x){const w=x&&(x.type||x.message)||String(x);msg="Não consegui conectar à sala ("+w+").";return draw()}
   clearInterval(iv);
   if(create){S=newS();addP(me.id,me.name,false);view="game";iv=setInterval(tick,1000);draw()}
   else{
