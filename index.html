@@ -88,13 +88,25 @@ button small{display:block;font-size:10px;font-weight:500}
 .rr span{color:#8aa795;font-size:14px}.rr span.ok{color:#42c987;font-weight:800}
 .rdy .sub{margin:10px 0}
 .rdy button.rb{width:100%;background:#35c27b;color:#0b2a1a;font-size:16px;margin:2px 0}.rdy button.rb.on{background:#1d3528;color:#42c987;border:1px solid #42c987}
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:6px;aspect-ratio:2/1;padding:8px;border:6px solid #d5dbd7;border-bottom:0;border-radius:6px 6px 0 0;margin:10px 0;background:repeating-linear-gradient(0deg,#0000 0 11px,#ffffff14 11px 12px),repeating-linear-gradient(90deg,#0000 0 11px,#ffffff14 11px 12px),#161c19}
+.mt .gl button.q{background:#0009;border:2px dashed #ffffff30;border-radius:10px;font-size:34px;color:#42c987;padding:0;width:auto}
+.mt .gl button.q.sel{border:3px solid #42c987;background:#42c98733}
+.mt .gl button.q:disabled{opacity:1;cursor:default}
+.du{background:#14271c;border:2px solid #42c987;border-radius:18px;padding:14px;margin:12px 0;text-align:center}
+.du h3{margin:0 0 4px;font-size:18px}
+.cr.ph{background-size:cover;background-position:center;position:relative;font-size:0;border:2px solid #fff}
+.cr.ph s{position:absolute;right:-5px;bottom:-5px;background:#0b2a45;color:#fff;font:700 9px system-ui;border-radius:8px;padding:1px 4px;text-decoration:none}
+.mini .cr.ph s{display:none}
+.pl.ph{font-size:0}.pl.ph.t0{box-shadow:0 0 0 2px #1d6fd8}.pl.ph.t1{box-shadow:0 0 0 2px #e8832a}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script>
-const P=[["Denis","Professor",85,"M"],["Renato","Professor",79,"G"],["Elias","Professor",71,"D"],["João da TI","Informática",70,"M"],["Carlos","Professor",67,"D"],["Eriel","Professor",65,"M"],["Matheus","Professor",73,"D"],["Dumas","Professor",75,"G"],["Lucas","Professor",70,"M"],["Antônio","Professor",72,"M"],["Zago","Limpeza",70,"A"],["Pedro Menezes","Aluno",80,"G"],["Jhonatan","Aluno",82,"G"],["Daniel Gerber","Aluno",63,"D"],["Lucius","Aluno",65,"D"],["Miguel Backes","Aluno",67,"D"],["Miguel Herzer","Aluno",82,"G"],["João Otávio","Aluno",65,"D"],["Irmão do João Otávio","Aluno",60,"M"],["João Vitor","Aluno",75,"D"],["Pedro Filipe","Aluno",72,"A"],["John Adrian","Aluno",77,"A"],["Nicolas Brinhosa","Aluno",80,"A"],["Bernardo","Aluno",81,"A"],["Daniel Braga","Aluno",72,"D"],["Henri Lima","Aluno",75,"A"]];
+const P=[["Denis","Professor",85,"M"],["Renato","Professor",79,"G"],["Elias","Professor",71,"D"],["João da TI","Informática",70,"M"],["Carlos","Professor",67,"D"],["Eriel","Professor",65,"M"],["Matheus","Professor",73,"D"],["Dumas","Professor",75,"G"],["Lucas Shape","Professor",70,"M"],["Antônio","Professor",72,"M"],["Zago","Limpeza",70,"A"],["Pedro Menezes","Aluno",80,"G"],["Jhonatan","Aluno",82,"G"],["Daniel Gerber","Aluno",63,"D"],["Lucius","Aluno",65,"D"],["Miguel Backes","Aluno",67,"D"],["Miguel Herzer","Aluno",82,"G"],["João Otávio","Aluno",65,"D"],["Irmão do João Otávio","Aluno",60,"M"],["João Vitor","Aluno",75,"D"],["Pedro Filipe","Aluno",72,"A"],["John Adrian","Aluno",77,"A"],["Nicolas Brinhosa","Aluno",80,"A"],["Bernardo","Aluno",81,"A"],["Daniel Braga","Aluno",72,"D"],["Henri Lima","Aluno",75,"A"],["Filho do Henri","Aluno",65,"M"],["Lucas Cardoso","Aluno",62,"D"],["Manoel Gomes","Cantor",67,"M"],["Ney Gaúcho","Meme",75,"A"],["Renan Santos","Político",67,"M"],["Lula","Político",65,"A"],["Jair Bolsonaro","Político",70,"D"],["Pai do Jhonatan","Família",72,"A"],["Flávio Bolsonaro","Político",71,"M"],["Amigão","Aluno",60,"M"],["Kátia","Alguém",67,"D"],["Luís","Professor",75,"G"],["Dedeco","Youtuber",77,"G"],["Enaldinho","Youtuber",74,"A"]];
+const PH={"Pedro Menezes":"data:image/jpeg;base64,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"};
+const phs=n=>PH[n]?`background-image:url(${PH[n]});background-size:cover;background-position:center`:"";
 const POS={G:"Goleiro",D:"Defensor",M:"Meia",A:"Atacante"},AB={G:"GOL",D:"DEF",M:"MEI",A:"ATA"};
 const FS=[["1-2-1",""],["2-1-1",""],["1-1-2",""],["2-2-0","Retranca"],["0-2-2","Tudo ou nada"]];
 const fc=f=>{const[D,M,A]=f.split("-").map(Number);return{G:1,D,M,A}};
@@ -132,35 +144,23 @@ function sell(){
   if(S.pl.every(x=>x.team.length>=5))return finish();
   nextP();
 }
+function fillTeams(){
+  const used=new Set(S.pl.flatMap(p=>p.team)),fl=[];
+  S.pl.forEach(p=>{const c=fc(p.f);Object.keys(c).forEach(k=>{
+    while(cnt(p,k)<c[k]){
+      const pool=P.map((x,i)=>i).filter(i=>!used.has(i)&&P[i][3]===k);
+      if(!pool.length)break;
+      const i=pool[Math.random()*pool.length|0];used.add(i);p.team.push(i);fl.push([p.name,P[i][0]]);
+    }})});
+  S.fill=fl;
+}
 function finish(){
-  S.ph="end";
+  S.ph="end";fillTeams();
   const o=S.pl.map(p=>Math.round((p.team.reduce((s,i)=>s+P[i][2],0)+40*(5-p.team.length))/5));
-  if(S.cfg.fmt==="mata")return knock(o);
-  const tb=S.pl.map((p,i)=>({i,pts:0,gf:0,ga:0,ovr:o[i]})),g=[];
-  for(let a=0;a<S.pl.length;a++)for(let b=a+1;b<S.pl.length;b++){
-    const ga=pois(1.3*Math.exp((o[a]-o[b])/22)),gb=pois(1.3*Math.exp((o[b]-o[a])/22));
-    g.push([a,b,ga,gb]);
-    tb[a].gf+=ga;tb[a].ga+=gb;tb[b].gf+=gb;tb[b].ga+=ga;
-    if(ga>gb)tb[a].pts+=3;else if(gb>ga)tb[b].pts+=3;else{tb[a].pts++;tb[b].pts++}
-  }
-  tb.sort((x,y)=>y.pts-x.pts||(y.gf-y.ga)-(x.gf-x.ga)||y.ovr-x.ovr);
-  S.res={fmt:"liga",tb,g};startSim();
+  S.res={fmt:S.cfg.fmt==="mata"?"mata":"liga",o,tb:[],g:[],rounds:[],champ:null};
+  startSim();
 }
-function knock(o){
-  let L=S.pl.map((_,i)=>i).sort(()=>Math.random()-.5),rounds=[];
-  while(L.length>1){
-    const nx=[],gm=[],n=L.length<=2?"Final":L.length<=4?"Semifinal":"Quartas";
-    if(L.length%2)nx.push(L.pop());
-    for(let k=0;k<L.length;k+=2){
-      const a=L[k],b=L[k+1],ga=pois(1.3*Math.exp((o[a]-o[b])/22)),gb=pois(1.3*Math.exp((o[b]-o[a])/22));
-      const w=ga>gb?a:gb>ga?b:(Math.random()<.5+(o[a]-o[b])/200?a:b);
-      gm.push([a,b,ga,gb,w]);nx.push(w);
-    }
-    rounds.push({n,g:gm});L=nx;
-  }
-  S.res={fmt:"mata",rounds,champ:L[0],o};startSim();
-}
-function mk(a,b,ga,gb,w,lb){
+function mk(a,b,ga,gb,lb){
   const T=[S.pl[a],S.pl[b]],nm=[T[0].name,T[1].name],W={A:4,M:2,D:.6,G:.05};
   const pk=t=>{const L=T[t].team;if(!L.length)return"Um jogador";const ws=L.map(i=>W[P[i][3]]*P[i][2]);let r=Math.random()*ws.reduce((x,y)=>x+y,0),k=0;while(k<ws.length-1&&(r-=ws[k])>0)k++;return P[L[k]][0]};
   const ev=[],used=new Set(),mn=()=>{let m,n=0;do{m=1+Math.random()*89|0}while(used.has(m)&&++n<200);used.add(m);return m};
@@ -172,24 +172,28 @@ function mk(a,b,ga,gb,w,lb){
     }
   });
   ev.push({m:45,t:0,k:"i",x:"Fim do primeiro tempo."});
-  const pen=w!=null&&ga===gb;
-  if(pen)ev.push({m:90,t:w===a?0:1,k:"i",x:"Empate! Nos pênaltis, "+S.pl[w].name+" avança."});
-  ev.push({m:90,t:0,k:"i",x:"Fim de jogo!"});
+  [0,1].forEach(t=>{for(let k=Math.min(2,pois(.9));k>0;k--){const n=pk(t);ev.push({m:mn(),t,k:"c",who:n,x:"GRANDE CHANCE! "+n+" fica cara a cara com o goleiro de "+nm[1-t]+"!"})}});
   ev.sort((x,y)=>x.m-y.m);
   const s=T.map(p=>p.team.length?p.team.reduce((x,i)=>x+P[i][2],0)/p.team.length:40),base=Math.max(38,Math.min(62,50+(s[0]-s[1])*.8));
-  const em={};ev.forEach(x=>{if("gdfb".includes(x.k))em[x.m]=x.t});
+  const em={};ev.forEach(x=>{if("gdfbc".includes(x.k))em[x.m]=x.t});
   let acc=0;const pa=[50],bx=[50];
   for(let m=1;m<=90;m++){
     const sh=Math.max(25,Math.min(75,base+Math.random()*28-14));acc+=sh;pa.push(Math.round(acc/m));
     bx.push(em[m]!=null?(em[m]?14:86):Math.round(Math.max(8,Math.min(92,50+(sh-50)*1.6+Math.random()*24-12))));
   }
-  return{a,b,ga,gb,w,pen,lb,ev,pa,bx};
+  return{a,b,lb,ev,pa,bx};
 }
 function startSim(){
-  const r=S.res,L=[];
-  if(r.fmt==="mata")r.rounds.forEach(x=>x.g.forEach((g,k)=>L.push(mk(g[0],g[1],g[2],g[3],g[4],x.n+(x.g.length>1?" · jogo "+(k+1):"")))));
-  else r.g.forEach((g,k)=>L.push(mk(g[0],g[1],g[2],g[3],null,"Jogo "+(k+1)+" de "+r.g.length)));
-  S.sim={list:L,i:0,min:0,hold:0,rd:null};S.ph=L.length?"sim":"end";if(L.length)S.sim.rd=mkRd();
+  const q={list:[],i:0,min:0,hold:0,rd:null,du:null,rv:0,rvd:null},o=S.res.o;S.sim=q;
+  const gl=(a,b)=>pois(.9*Math.exp((o[a]-o[b])/22));
+  if(S.cfg.fmt==="mata"){S.mt={L:S.pl.map((_,i)=>i).sort(()=>Math.random()-.5)};mkRound()}
+  else{const n=S.pl.length,tot=n*(n-1)/2;let k=0;for(let a=0;a<n;a++)for(let b=a+1;b<n;b++)q.list.push(mk(a,b,gl(a,b),gl(b,a),"Jogo "+(++k)+" de "+tot))}
+  S.ph="sim";q.rd=mkRd();
+}
+function mkRound(){
+  const q=S.sim,m=S.mt,o=S.res.o,L=[...m.L],n=L.length<=2?"Final":L.length<=4?"Semifinal":"Quartas";
+  m.bye=L.length%2?[L.pop()]:[];m.n=n;m.s=q.list.length;
+  for(let k=0;k<L.length;k+=2){const a=L[k],b=L[k+1];q.list.push(mk(a,b,pois(.9*Math.exp((o[a]-o[b])/22)),pois(.9*Math.exp((o[b]-o[a])/22)),n+(L.length>2?" · jogo "+(k/2+1):"")))}
 }
 function mkRd(){const q=S.sim,M=q.list[q.i];if(!M)return null;return{t:30,r:{}}}
 function tickRd(q){
@@ -197,9 +201,56 @@ function tickRd(q){
   ids.forEach(p=>{if(p.bot&&!q.rd.r[p.id]&&Math.random()<.5)q.rd.r[p.id]=1});
   if(ids.every(p=>q.rd.r[p.id])||--q.rd.t<=0)q.rd=null;
 }
-function nextM(){const q=S.sim;q.i++;q.min=0;q.hold=0;if(q.i>=q.list.length)S.ph="end";else q.rd=mkRd()}
-function skipM(){if(host&&S&&S.ph==="sim"){nextM();bcast()}}
-function skipAll(){if(host&&S&&S.ph==="sim"){S.ph="end";bcast()}}
+function mkDu(M,c){const A=S.pl[c.t===0?M.a:M.b],D=S.pl[c.t===0?M.b:M.a];return{m:c.m,t:c.t,at:A.id,df:D.id,who:c.who,sh:null,dv:null,tm:10}}
+function tickDu(q){
+  const du=q.du,A=S.pl.find(p=>p.id===du.at),D=S.pl.find(p=>p.id===du.df);
+  if(A&&A.bot&&du.sh==null&&Math.random()<.6)du.sh=Math.random()*4|0;
+  if(D&&D.bot&&du.dv==null&&Math.random()<.6)du.dv=Math.random()*4|0;
+  if((du.sh!=null&&du.dv!=null)||--du.tm<=0)resolveDu(q);
+}
+function outc(M,m,t,who,goal){
+  const T=S.pl[t===0?M.a:M.b],O=S.pl[t===0?M.b:M.a],gk=(O.team.map(i=>P[i]).find(x=>x[3]==="G")||["O goleiro"])[0];
+  return goal?{m,t,k:"g",x:"GOOOL! "+who+" bate no canto e marca para "+T.name+"!"}:{m,t,k:"d",x:"DEFENDEU! "+gk+" pula no canto certo e pega o chute de "+who+"!"};
+}
+function resolveDu(q){
+  const du=q.du,M=q.list[q.i],c=M.ev.find(x=>x.k==="c"&&x.m===du.m&&x.t===du.t);
+  const sh=du.sh!=null?du.sh:Math.random()*4|0,dv=du.dv!=null?du.dv:Math.random()*4|0,sv=sh===dv;
+  if(c){c.k="n";M.ev.push(outc(M,du.m,du.t,du.who,!sv));M.ev.sort((a,b)=>a.m-b.m)}
+  q.rvd={sh,dv,sv};q.rv=3;q.du=null;
+}
+function autoMatch(M){
+  M.ev.filter(x=>x.k==="c").forEach(c=>{c.k="n";M.ev.push(outc(M,c.m,c.t,c.who,Math.random()<.72))});
+  M.ev.sort((a,b)=>a.m-b.m);endMatch(M);
+}
+function endMatch(M){
+  if(M.done)return;M.done=1;
+  M.fa=M.ev.filter(x=>x.k==="g"&&x.t===0).length;M.fb=M.ev.filter(x=>x.k==="g"&&x.t===1).length;
+  if(S.cfg.fmt==="mata"){
+    if(M.fa!==M.fb)M.w=M.fa>M.fb?M.a:M.b;
+    else{const o=S.res.o;M.w=Math.random()<.5+(o[M.a]-o[M.b])/200?M.a:M.b;M.ev.push({m:90,t:M.w===M.a?0:1,k:"i",x:"Empate! Nos pênaltis, "+S.pl[M.w].name+" avança."})}
+  }
+  M.ev.push({m:90,t:0,k:"i",x:"Fim de jogo!"});
+}
+function calcLiga(){
+  const o=S.res.o,tb=S.pl.map((p,i)=>({i,pts:0,gf:0,ga:0,ovr:o[i]}));
+  S.sim.list.forEach(M=>{const a=tb[M.a],b=tb[M.b];a.gf+=M.fa;a.ga+=M.fb;b.gf+=M.fb;b.ga+=M.fa;if(M.fa>M.fb)a.pts+=3;else if(M.fb>M.fa)b.pts+=3;else{a.pts++;b.pts++}});
+  tb.sort((x,y)=>y.pts-x.pts||(y.gf-y.ga)-(x.gf-x.ga)||y.ovr-x.ovr);
+  S.res.tb=tb;S.res.g=S.sim.list.map(M=>[M.a,M.b,M.fa,M.fb]);
+}
+function nextM(){
+  const q=S.sim;q.i++;q.min=0;q.hold=0;q.du=null;q.rv=0;q.rvd=null;
+  if(q.i>=q.list.length){
+    if(S.cfg.fmt==="mata"){
+      const m=S.mt,ms=q.list.slice(m.s),win=[...m.bye,...ms.map(x=>x.w)];
+      S.res.rounds.push({n:m.n,g:ms.map(x=>[x.a,x.b,x.fa,x.fb,x.w])});
+      if(win.length<2){S.res.champ=win[0];S.ph="end";return}
+      m.L=win;mkRound();
+    }else{calcLiga();S.ph="end";return}
+  }
+  q.rd=mkRd();
+}
+function skipM(){if(host&&S&&S.ph==="sim"){autoMatch(S.sim.list[S.sim.i]);nextM();bcast()}}
+function skipAll(){if(host&&S&&S.ph==="sim"){let g=0;while(S.ph==="sim"&&g++<300){autoMatch(S.sim.list[S.sim.i]);nextM()}bcast()}}
 function simv(isH){
   const q=S.sim,M=q.list[q.i],m=Math.min(90,q.min),fin=m>=90,A=S.pl[M.a],B=S.pl[M.b];
   const vis=M.ev.filter(x=>x.m<=m),isS=x=>"gdfb".includes(x.k);
@@ -208,14 +259,25 @@ function simv(isH){
   const lk=[...vis].reverse().find(x=>isS(x)&&m-x.m<=3),bub=lk?{g:"GOOOL!",d:"Defendeu",f:"Pra fora",b:"Bloqueou"}[lk.k]:"";
   const X={G:6,D:23,M:39,A:47},ini=n=>n.split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase();
   const side=(p,t)=>{const g={G:[],D:[],M:[],A:[]};p.team.forEach(i=>g[P[i][3]].push(P[i][0]));
-    return Object.keys(g).map(k=>g[k].map((n,j)=>{const x=(t?100-X[k]:X[k])+(M.bx[m]-50)*.08,y=(j+1)/(g[k].length+1)*100;return`<i class="pl t${t}" style="left:${x}%;top:${y}%" title="${e(n)}">${e(ini(n))}</i>`}).join("")).join("")};
+    return Object.keys(g).map(k=>g[k].map((n,j)=>{const x=(t?100-X[k]:X[k])+(M.bx[m]-50)*.08,y=(j+1)/(g[k].length+1)*100;return`<i class="pl t${t}${PH[n]?" ph":""}" style="left:${x}%;top:${y}%;${phs(n)}" title="${e(n)}">${PH[n]?"":e(ini(n))}</i>`}).join("")).join("")};
   const rd=q.rd,pp=[A,B],nr=rd?pp.filter(p=>rd.r[p.id]).length:0,mi=pp.some(p=>p.id===me.id),on=rd&&rd.r[me.id];
-  const pn=rd?`<div class="rdy"><h3>🛡️ Prontos para o jogo?</h3>${pp.map(p=>`<div class="rr"><b>${e(p.name)}</b><span class="${rd.r[p.id]?"ok":""}">${rd.r[p.id]?"Pronto ✓":"Preparando"}</span></div>`).join("")}<p class="sub">${nr}/2 prontos · toque de novo para cancelar a sua confirmação.</p>${mi?`<button class="rb ${on?"on":""}" onclick="send('ready',{id:me.id,v:${!on}})">✓ ${on?"Pronto! Toque para cancelar":"Pronto para o jogo"}</button>`:""}<p class="sub" style="margin-bottom:0">A partida começa sozinha quando os dois confirmarem, ou em ${rd.t}s.</p></div>`:"";
+  const pn=rd?`<div class="rdy"><h3>🛡️ Prontos para o jogo?</h3>${pp.map(p=>`<div class="rr"><b>${e(p.name)}</b><span class="${rd.r[p.id]?"ok":""}">${rd.r[p.id]?"Pronto ✓":"Preparando"}</span></div>`).join("")}<p class="sub">${nr}/2 prontos · toque de novo para cancelar a sua confirmação.</p>${mi?`<button class="rb ${on?"on":""}" onclick="send('ready',{id:me.id,v:${!on}})">✓ ${on?"Pronto! Toque para cancelar":"Pronto para o jogo"}</button>`:""}${q.i===0&&S.fill&&S.fill.length?`<p class="sub">🎲 Sorteados para completar os times: ${S.fill.map(x=>e(x[0])+" ← "+e(x[1])).join(", ")}</p>`:""}<p class="sub" style="margin-bottom:0">A partida começa sozinha quando os dois confirmarem, ou em ${rd.t}s.</p></div>`:"";
+  const du=q.du,rv=q.rvd;
+  const gq=o=>`<div class="gl">${[0,1,2,3].map(i=>`<button class="q${o.sel===i?" sel":""}" ${o.on?`onclick="send('pick',{id:me.id,c:${i}})"`:"disabled"}>${(o.sh===i?"⚽":"")+(o.dv===i?"🧤":"")||["↖","↗","↙","↘"][i]}</button>`).join("")}</div>`;
+  let pd="";
+  if(du){
+    const A2=S.pl.find(p=>p.id===du.at),D2=S.pl.find(p=>p.id===du.df),isA=me.id===du.at,isD=me.id===du.df;
+    pd=`<div class="du"><h3>${isA?"⚽ Grande chance! Onde você vai chutar?":isD?"🧤 Defenda! Para onde você vai pular?":"Grande chance para "+e(A2.name)+"!"}</h3>
+    <p class="sub" style="margin:0">${isA?(du.sh!=null?"Chute escolhido! Aguardando o goleiro…":"Escolha um canto."):isD?(du.dv!=null?"Defesa escolhida! Aguardando o chute…":"Escolha um lado."):e(A2.name)+(du.sh!=null?" ✓":" …")+" · "+e(D2.name)+(du.dv!=null?" ✓":" …")} · ${du.tm}s</p>
+    ${gq({on:(isA&&du.sh==null)||(isD&&du.dv==null),sel:isA?du.sh:isD?du.dv:-1})}<p class="sub" style="margin:0">Se os dois escolherem o mesmo lado, o goleiro defende. Se não, é gol!</p></div>`;
+  }else if(q.rv>0&&rv){
+    pd=`<div class="du"><h3>${rv.sv?"🧤 DEFENDEU!":"⚽ GOOOL!"}</h3>${gq({on:false,sh:rv.sh,dv:rv.dv})}<p class="sub" style="margin:0">${rv.sv?"Os dois escolheram o mesmo lado.":"Lados diferentes: foi gol!"}</p></div>`;
+  }
   const by=18+((m*37)%64),cm=vis.slice(-7).reverse().map(x=>`<p><b>${x.m}'</b> ${x.k==="g"?`<b style="color:#42c987">${e(x.x)}</b>`:e(x.x)}</p>`).join("");
   return`<div class="mt"><div class="mn">${q.rd?"Aguardando":fin?"Fim de jogo":"● "+m+"'"}</div><p class="sub" style="text-align:center;margin:0 0 8px">${e(M.lb)} · ${q.i+1}/${q.list.length}</p>
   <div class="hd"><div><div class="tn" style="color:#6db3ff">${e(A.name)}</div><div class="sub">${st(0)}</div></div><div class="sc">${sc(0)}<span style="color:#587064"> – </span>${sc(1)}</div><div><div class="tn" style="color:#ffab6b">${e(B.name)}</div><div class="sub">${st(1)}</div></div></div>
   <div class="fld">${bub?`<span class="bub">${bub}</span>`:""}${side(A,0)}${side(B,1)}<b class="ball" style="left:${M.bx[m]}%;top:${by}%"></b></div><div class="bar" style="width:${m/90*100}%"></div>
-  ${pn}
+  ${pd}${pn}
   <div class="sts"><div><b style="color:#6db3ff">${ns(0)}</b><span class="sl">Finalizações</span><b style="color:#ffab6b">${ns(1)}</b></div>
   <div style="margin-top:10px"><b style="color:#6db3ff">${pa}%</b><span class="sl">Posse de bola</span><b style="color:#ffab6b">${pb}%</b></div>
   <div class="pb"><i style="width:${pa}%;background:#1d6fd8"></i><i style="width:${pb}%;background:#e8832a"></i></div></div>
@@ -230,8 +292,13 @@ function tick(){
   if(S.ph==="sim"){
     const q=S.sim;
     if(q.rd){tickRd(q);bcast();return}
+    if(q.du){tickDu(q);bcast();return}
+    if(q.rv>0){if(--q.rv<=0)q.rvd=null;bcast();return}
     if(q.hold>0){if(--q.hold<=0)nextM()}
-    else if(q.min<90){q.min=Math.min(90,q.min+3);if(q.min>=90)q.hold=4}
+    else if(q.min<90){
+      const M=q.list[q.i],tg=Math.min(90,q.min+3),c=M.ev.find(x=>x.k==="c"&&x.m<=tg);
+      if(c){q.min=c.m;q.du=mkDu(M,c)}else{q.min=tg;if(q.min>=90){endMatch(M);q.hold=4}}
+    }
     bcast();return;
   }
   if(S.ph==="auction"&&S.notice){
@@ -266,6 +333,7 @@ function onMsg(t,d){
   else if(!p)return;
   else if(t==="bid"){place(d.id,d.n);chk()}
   else if(t==="pass"&&S.ph==="auction"&&S.by!==d.id){if(!S.pass.includes(d.id))S.pass.push(d.id);chk()}
+  else if(t==="pick"&&S.ph==="sim"&&S.sim.du){const du=S.sim.du;if(Number.isInteger(d.c)&&d.c>=0&&d.c<4){if(d.id===du.at&&du.sh==null)du.sh=d.c;else if(d.id===du.df&&du.dv==null)du.dv=d.c}}
   else if(t==="ready"&&S.ph==="sim"&&S.sim.rd){const M=S.sim.list[S.sim.i];if(S.pl[M.a].id===d.id||S.pl[M.b].id===d.id){if(d.v)S.sim.rd.r[d.id]=1;else delete S.sim.rd.r[d.id]}}
   else if(t==="ready"&&S.ph==="lobby")p.ready=!!d.v;
   else if(t==="form"){
@@ -322,7 +390,7 @@ async function online(create){
   if(!c){msg="Digite o código da sala.";return draw()}
   try{
     code=c;R=await mkRoom(c,create);host=create;
-    ["hello","bid","state","ready","form","pass"].forEach(t=>R.on(t,m=>onMsg(t,m.data)));
+    ["hello","bid","state","ready","form","pass","pick"].forEach(t=>R.on(t,m=>onMsg(t,m.data)));
   }catch(x){const w=x&&(x.type||x.message)||String(x);msg="Não consegui conectar à sala ("+w+").";return draw()}
   clearInterval(iv);
   if(create){S=newS();addP(me.id,me.name,false);view="game";iv=setInterval(tick,1000);draw()}
@@ -341,7 +409,7 @@ function setCfg(k,v){
   if(k==="money")S.pl.forEach(p=>p.money=S.cfg.money);
   bcast();
 }
-function again(){S.ph="lobby";S.res=null;S.sim=null;S.pl.forEach(p=>{p.money=S.cfg.money;p.team=[];p.ready=p.bot});bcast()}
+function again(){S.ph="lobby";S.res=null;S.sim=null;S.fill=null;S.pl.forEach(p=>{p.money=S.cfg.money;p.team=[];p.ready=p.bot});bcast()}
 const bid=n=>send("bid",{id:me.id,n:S.bid+n});
 const mineP=()=>S&&S.pl.find(p=>p.id===me.id);
 const bidAll=()=>send("bid",{id:me.id,n:mb(mineP())});
@@ -360,7 +428,7 @@ function pitch(p,big,hl){
     let s="";
     for(let j=0;j<c[k];j++){
       const i=own[k][j];
-      s+=i!=null?`<div class="sl"><i class="cr ok">${shown()?P[i][2]:e(P[i][0][0])}</i><b>${e(P[i][0].split(" ")[0])}</b></div>`
+      s+=i!=null?`<div class="sl">${PH[P[i][0]]?`<i class="cr ok ph" style="${phs(P[i][0])}">${shown()?`<s>${P[i][2]}</s>`:""}</i>`:`<i class="cr ok">${shown()?P[i][2]:e(P[i][0][0])}</i>`}<b>${e(P[i][0].split(" ")[0])}</b></div>`
         :`<div class="sl"><i class="cr ${hl&&S.cur>=0&&P[S.cur][3]===k&&canPos(p)?"hl":""}">${AB[k]}</i></div>`;
     }
     return s?`<div class="rw">${s}</div>`:"";
@@ -406,7 +474,7 @@ function auction(mine){
   const others=S.pl.filter(x=>x.id!==me.id).map(x=>`<div class="${S.by===x.id?"ld":""}"><div class="top"><b>${e(x.name)}${x.bot?" 🤖":""}</b><span class="mut">R$ ${x.money}</span></div>
   ${S.by===x.id?`<span class="tag">lidera com R$ ${S.bid}</span>`:S.pass.includes(x.id)?`<span class="tag">passou</span>`:""}${pitch(x,false,0)}</div>`).join("");
   return `<div class="pill">Jogador ${S.i} de ${P.length}</div><div class="grid">${me_}
-  <section class="lot">${ring}<div class="av">${e(p[0][0])}<div class="nb"><b>${c.hide?"?":p[2]}</b>${c.hide?"NOTA":"OVR"}</div></div>
+  <section class="lot">${ring}<div class="av" style="${phs(p[0])}">${PH[p[0]]?"":e(p[0][0])}<div class="nb"><b>${c.hide?"?":p[2]}</b>${c.hide?"NOTA":"OVR"}</div></div>
   <h2 style="margin:4px 0">${e(p[0])}</h2><div class="mut">${POS[p[3]]} · ${e(p[1])}</div>
   <div class="chips" style="justify-content:center"><span>${e(p[1])}</span><span>${AB[p[3]]}</span></div>
   <div class="mut">${w?e(w.name)+" lidera":"Sem lances"}</div><div class="price">R$ ${S.bid}</div>
